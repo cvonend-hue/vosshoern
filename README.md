@@ -15,8 +15,10 @@ Die Website liegt ohne Build-Schritt unter `site/`. Der lokale Server liefert au
 ## Seiten
 
 - Startseite
-- Wohnungsübersicht und vier Wohnungsdetails
+- Wohnungsübersicht und vier Wohnungsdetails mit den vollständigen Fotogalerien der Bestandsseite (44, 25, 41 und 22 Bilder)
 - Das Haus, Gästehaus am Brockeswald, Region, Wissenswertes, Kontakt
+
+Die Navigation bleibt beim Scrollen sichtbar. Die Sprachwahl im Header wechselt auf jeder Unterseite zwischen Deutsch und Englisch; englische Seiten liegen unter `/en/`. Das Logo im Header stammt aus der von der Inhaberin bereitgestellten Originaldatei `Logo_mit Namen V32.jpg`. Der Darkfather-Schriftzug ist damit originalgetreu im Bild enthalten.
 
 Anfragen führen per E-Mail, Telefon oder zum bestehenden Kontaktformular. Die veröffentlichten Preisangaben sind als Orientierung gekennzeichnet; verbindliche Konditionen werden individuell angefragt. Für die Demo verweist der Footer auf die Rechtstexte der bestehenden Website. Vor einem produktiven Wechsel müssen sie an das neue Hosting angepasst werden.
 
@@ -28,4 +30,5 @@ Anfragen führen per E-Mail, Telefon oder zum bestehenden Kontaktformular. Die v
 
 - [Bestandsaufnahme](docs/bestandsaufnahme.md)
 - [Bildquellen](docs/bildquellen.json)
+- [Quellen der Wohnungsfotos](docs/gallery-sources.json)
 - [Manrope-Lizenz](docs/manrope-OFL.txt)

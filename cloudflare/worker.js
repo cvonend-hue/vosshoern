@@ -4,7 +4,8 @@ const contentTypes = {
   '.js': 'text/javascript; charset=utf-8',
   '.webp': 'image/webp',
   '.woff2': 'font/woff2',
-  '.svg': 'image/svg+xml'
+  '.svg': 'image/svg+xml',
+  '.jpg': 'image/jpeg'
 };
 
 function equal(a, b) {
@@ -43,7 +44,7 @@ export default {
     }
 
     const pathname = new URL(request.url).pathname;
-    const staticFile = pathname === '/styles.css' || pathname === '/app.js' || /^\/assets\/[a-z0-9-]+\.(webp|woff2|svg)$/.test(pathname);
+    const staticFile = pathname === '/styles.css' || pathname === '/app.js' || pathname === '/i18n.js' || /^\/assets\/(?:gallery\/)?[a-z0-9-]+\.(webp|woff2|svg|jpg)$/.test(pathname);
     const file = staticFile ? pathname : '/index.html';
     const revision = env.SOURCE_REVISION || 'main';
     const source = `https://raw.githubusercontent.com/cvonend-hue/vosshoern/${revision}/site${file}`;
