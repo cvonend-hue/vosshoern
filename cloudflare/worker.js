@@ -48,7 +48,9 @@ export default {
     const file = staticFile ? pathname : '/index.html';
     const revision = env.SOURCE_REVISION || 'main';
     const source = `https://raw.githubusercontent.com/cvonend-hue/vosshoern/${revision}/site${file}`;
-    const upstream = await fetch(source);
+    // The revision is immutable, so Cloudflare can reuse the source file at its edge.
+    // Authentication still runs first; browsers receive no-store below.
+    const upstream = await fetch(source, {cf: {cacheEverything: true, cacheTtl: 86400}});
     if (!upstream.ok) return new Response('Datei konnte nicht geladen werden.', {status: 502});
 
     const extension = file.slice(file.lastIndexOf('.'));
