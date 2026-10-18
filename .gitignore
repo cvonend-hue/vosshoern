@@ -5,3 +5,8 @@ dist/
 .env.*
 !.env.example
 *.log
+gallery-thumbs.json
+gallery-urls.json
+guest-assets.json
+home-assets.json
+.DS_Store
