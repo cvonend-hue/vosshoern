@@ -52,16 +52,19 @@ export default {
     if (!upstream.ok) return new Response('Datei konnte nicht geladen werden.', {status: 502});
 
     const extension = file.slice(file.lastIndexOf('.'));
+    const headers = {
+      'Content-Type': contentTypes[extension] || 'application/octet-stream',
+      'Cache-Control': 'no-store, max-age=0',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'X-Frame-Options': 'DENY',
+      'Content-Security-Policy': "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    };
+    if (extension === '.html') headers['Clear-Site-Data'] = '"cache"';
+
     return new Response(upstream.body, {
       status: 200,
-      headers: {
-        'Content-Type': contentTypes[extension] || 'application/octet-stream',
-        'Cache-Control': 'private, max-age=3600',
-        'X-Content-Type-Options': 'nosniff',
-        'Referrer-Policy': 'strict-origin-when-cross-origin',
-        'X-Frame-Options': 'DENY',
-        'Content-Security-Policy': "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-      }
+      headers
     });
   }
 };
